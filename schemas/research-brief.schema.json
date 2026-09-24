@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocada.dev/schemas/research-brief.schema.json",
+  "title": "Time-sensitive research brief",
+  "x-version": "1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "topic", "researched_at", "facts", "interpretations", "hypotheses", "sources", "relevance", "content_opportunity"],
+  "properties": {
+    "id": {"type": "string"}, "topic": {"type": "string"}, "researched_at": {"type": "string", "format": "date-time"},
+    "facts": {"type": "array", "items": {"type": "string"}}, "interpretations": {"type": "array", "items": {"type": "string"}},
+    "hypotheses": {"type": "array", "items": {"type": "string"}},
+    "sources": {"type": "array", "items": {"type": "object", "required": ["url", "publisher", "published_at", "accessed_at", "primary"], "properties": {"url": {"type": "string", "format": "uri"}, "publisher": {"type": "string"}, "published_at": {"type": "string"}, "accessed_at": {"type": "string", "format": "date-time"}, "primary": {"type": "boolean"}}}},
+    "relevance": {"enum": ["HIGH", "MEDIUM", "LOW", "NONE"]}, "content_opportunity": {"type": "string"}
+  }
+}

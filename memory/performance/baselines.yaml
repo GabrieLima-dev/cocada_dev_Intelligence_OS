@@ -1,0 +1,6 @@
+version: 1
+status: UNKNOWN
+minimum_comparable_items: 5
+groups: []
+
+# Baselines devem ser segmentados por plataforma, formato e janela. UNKNOWN nunca equivale a 0.

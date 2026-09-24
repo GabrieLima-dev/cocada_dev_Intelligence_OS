@@ -1,0 +1,26 @@
+version: 1
+scale:
+  min: 0
+  max: 5
+weights:
+  brand_fit: 15
+  audience_fit: 12
+  hook_strength: 12
+  shareability: 9
+  saveability: 8
+  authority: 10
+  timing: 10
+  novelty: 6
+  series_potential: 7
+  production_efficiency: 4
+  evidence_strength: 7
+gates:
+  brand_fit_min: 3
+  audience_fit_min: 2
+priority_thresholds:
+  NOW: 78
+  NEXT: 65
+  LATER: 50
+
+# Score = soma(nota/5 * peso). EXPERIMENT e ARCHIVE dependem de julgamento,
+# não apenas da faixa. production_efficiency: 5 = baixo esforço/alta viabilidade.

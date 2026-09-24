@@ -1,0 +1,24 @@
+version: 1
+default:
+  provider: neutral
+  context_order:
+    - brand/BRAND_OS.md
+    - strategy/CURRENT_STRATEGY.md
+    - memory/creator/profile.md
+    - selected_agent_contracts
+    - selected_workflow
+    - task_artifacts
+  expose_internal_deliberation: false
+  structured_handoffs: true
+  require_unknown_marker: true
+
+gpt-5.6-sol:
+  inherits: default
+  note: "Perfil preferencial informado para a V1; contratos explícitos e contexto seletivo evitam um prompt monolítico."
+  recommended_depth:
+    FAST: low
+    STANDARD: medium
+    DEEP: high
+
+# Modelos/runtimes futuros herdam o contrato default. Nomes de parâmetros e
+# níveis de reasoning devem ser adaptados pelo conector real, não pelo domínio.

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocada.dev/schemas/decision.schema.json",
+  "title": "Decision log entry",
+  "x-version": "1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "decision", "context", "alternatives", "reason", "evidence", "decided_by", "decided_at", "review_at", "outcome"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^DEC-[0-9]{4}$"},
+    "decision": {"type": "string"}, "context": {"type": "string"},
+    "alternatives": {"type": "array", "items": {"type": "string"}}, "reason": {"type": "string"},
+    "evidence": {"type": "array", "items": {"type": "string"}}, "decided_by": {"type": "string"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "review_at": {"oneOf": [{"type": "string", "format": "date-time"}, {"const": "UNKNOWN"}]},
+    "outcome": {"oneOf": [{"type": "string"}, {"const": "UNKNOWN"}]}
+  }
+}

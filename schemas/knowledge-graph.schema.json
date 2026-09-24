@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocada.dev/schemas/knowledge-graph.schema.json",
+  "title": "Portable knowledge graph",
+  "x-version": "1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "nodes", "edges"],
+  "properties": {
+    "version": {"type": "integer", "minimum": 1},
+    "nodes": {"type": "array", "items": {"type": "object", "required": ["id", "type", "label"], "properties": {"id": {"type": "string"}, "type": {"enum": ["content", "hook", "series", "mechanism", "pillar", "hypothesis", "metric_event", "experiment", "learning", "source"]}, "label": {"type": "string"}, "uri": {"type": "string"}}, "additionalProperties": false}},
+    "edges": {"type": "array", "items": {"type": "object", "required": ["from", "relation", "to", "created_at"], "properties": {"from": {"type": "string"}, "relation": {"enum": ["USES_HOOK", "BELONGS_TO_SERIES", "USES_MECHANISM", "BELONGS_TO_PILLAR", "TESTS", "HAS_METRIC_EVENT", "PART_OF_EXPERIMENT", "PRODUCED_LEARNING", "SUPPORTED_BY", "SUPERSEDES"]}, "to": {"type": "string"}, "created_at": {"type": "string", "format": "date-time"}, "confidence": {"enum": ["LOW", "MEDIUM", "HIGH", "VALIDATED"]}}, "additionalProperties": false}}
+  }
+}

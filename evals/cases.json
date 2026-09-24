@@ -1,0 +1,86 @@
+[
+  {
+    "id": "EVAL-001",
+    "input": "Não sei o que postar hoje.",
+    "mode": "STANDARD",
+    "expected": {
+      "intent": "direction",
+      "workflow": "workflows/daily_direction.md",
+      "required_agents": ["AGENT-CONTENT-STRATEGIST", "AGENT-IDEA-LAB"],
+      "qualitative": ["escolhe uma direção", "considera estratégia, timing e esforço", "entrega hook e execução", "não responde apenas depende"]
+    },
+    "forbidden": ["inventar métricas", "entregar 30 ideias aleatórias"]
+  },
+  {
+    "id": "EVAL-002",
+    "input": "Java lançou uma versão nova. Vale conteúdo?",
+    "mode": "DEEP",
+    "expected": {
+      "intent": "news",
+      "workflow": "workflows/news_to_content.md",
+      "required_agents": ["AGENT-MARKET-RADAR", "AGENT-TECHNICAL-REVIEWER"],
+      "qualitative": ["pesquisa fonte oficial", "confirma versão e data", "separa fato e interpretação", "pode recomendar não produzir"]
+    },
+    "forbidden": ["responder de memória", "repetir release sem impacto"]
+  },
+  {
+    "id": "EVAL-003",
+    "input": "Tenho uma ideia sobre DTO.",
+    "mode": "STANDARD",
+    "expected": {
+      "intent": "idea_review",
+      "workflow": "workflows/idea_scoring.md",
+      "required_agents": ["AGENT-BRAND-STRATEGIST", "AGENT-CONTENT-STRATEGIST"],
+      "qualitative": ["critica o ângulo", "começa pelo motivo para se importar", "propõe formato e mecanismo", "não valida automaticamente"]
+    },
+    "forbidden": ["abrir com hoje vamos falar sobre DTO", "inventar experiência pessoal"]
+  },
+  {
+    "id": "EVAL-004",
+    "input": "Meu vídeo teve muitos saves mas poucos compartilhamentos. O que isso indica?",
+    "mode": "STANDARD",
+    "expected": {
+      "intent": "metrics",
+      "workflow": "workflows/metrics_to_learning.md",
+      "required_agents": ["AGENT-ANALYTICS", "AGENT-EXPERIMENTS", "AGENT-KNOWLEDGE-CURATOR"],
+      "qualitative": ["pede ou verifica denominadores e baseline", "oferece hipóteses, não certeza", "sugere teste", "não promove regra"]
+    },
+    "forbidden": ["declarar causalidade", "ignorar reach"]
+  },
+  {
+    "id": "EVAL-005",
+    "input": "Quero transformar uma experiência do trabalho em conteúdo.",
+    "mode": "STANDARD",
+    "expected": {
+      "intent": "experience_to_content",
+      "workflow": "workflows/story_or_reel.md",
+      "required_agents": ["AGENT-CONTENT-STRATEGIST", "AGENT-IDEA-LAB"],
+      "qualitative": ["identifica conflito, aprendizado ou insight", "protege confidencialidade", "não inventa detalhes", "decide Story ou conteúdo principal"]
+    },
+    "forbidden": ["atribuir projeto ou bug não informado"]
+  },
+  {
+    "id": "EVAL-006",
+    "input": "Quero 5 hooks para explicar Kafka.",
+    "mode": "FAST",
+    "expected": {
+      "intent": "hooks",
+      "workflow": "workflows/idea_to_publish.md",
+      "required_agents": ["AGENT-HOOK-LAB"],
+      "qualitative": ["gera estruturas diferentes", "inclui primeiro frame e payoff", "não escreve roteiro inteiro", "evita promessa ampla demais"]
+    },
+    "forbidden": ["cinco paráfrases", "clickbait sem entrega"]
+  },
+  {
+    "id": "EVAL-007",
+    "input": "Esse vídeo deveria ser Story ou Reel?",
+    "mode": "FAST",
+    "expected": {
+      "intent": "format",
+      "workflow": "workflows/story_or_reel.md",
+      "required_agents": ["AGENT-CONTENT-STRATEGIST"],
+      "qualitative": ["aplica rotina pura versus rotina com insight", "escolhe um formato", "explica brevemente"]
+    },
+    "forbidden": ["responder só depende"]
+  }
+]

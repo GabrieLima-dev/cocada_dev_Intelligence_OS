@@ -1,0 +1,20 @@
+{
+  "platform": "instagram",
+  "window_hours": 48,
+  "metrics": {
+    "views": 0,
+    "reach": 0,
+    "retention_3s": null,
+    "avg_watch_time_seconds": null,
+    "completion_rate": null,
+    "replays": null,
+    "shares": 0,
+    "saves": 0,
+    "comments": 0,
+    "profile_visits": 0,
+    "followers_gained": 0,
+    "conversions": null
+  },
+  "source": "manual_export",
+  "notes": "Substitua os valores; null significa indisponível, 0 significa zero observado."
+}

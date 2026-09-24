@@ -1,0 +1,15 @@
+{
+  "ratings": {
+    "brand_fit": {"rating": 5, "reason": "Java aplicado fora do tutorial"},
+    "audience_fit": {"rating": 4, "reason": "dor comum de dev backend"},
+    "hook_strength": {"rating": 4, "reason": "consequência demonstrável"},
+    "shareability": {"rating": 3, "reason": "útil para colegas de time"},
+    "saveability": {"rating": 4, "reason": "checklist reutilizável"},
+    "authority": {"rating": 4, "reason": "permite demonstrar código"},
+    "timing": {"rating": 2, "reason": "evergreen sem urgência"},
+    "novelty": {"rating": 3, "reason": "tema conhecido com ângulo prático"},
+    "series_potential": {"rating": 5, "reason": "encaixa em série recorrente"},
+    "production_efficiency": {"rating": 4, "reason": "rosto e captura de IDE"},
+    "evidence_strength": {"rating": 3, "reason": "documentação e demo disponíveis"}
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocada.dev/schemas/content.schema.json",
+  "title": "COCADA content record",
+  "x-version": "1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "title", "pillar", "series", "objective", "audience", "problem", "topic", "angle", "hook", "main_mechanism", "secondary_mechanisms", "format", "duration_seconds", "platforms", "status", "priority", "source", "created_at", "published_at", "external_ids", "score", "hypotheses", "production", "performance", "learnings"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"type": "string", "pattern": "^CNT-[0-9]{4}-[0-9]{4}$"},
+    "title": {"type": "string", "minLength": 1},
+    "pillar": {"enum": ["java", "backend_architecture", "news", "education"]},
+    "series": {"type": ["string", "null"]},
+    "objective": {"enum": ["reach", "authority", "saves", "shares", "relationship", "news", "conversion", "learning"]},
+    "audience": {"type": "string"},
+    "problem": {"type": "string"},
+    "topic": {"type": "string", "minLength": 1},
+    "angle": {"type": "string", "minLength": 1},
+    "hook": {
+      "type": "object",
+      "required": ["structure", "spoken", "first_frame", "payoff"],
+      "properties": {
+        "structure": {"type": "string"}, "spoken": {"type": "string"},
+        "first_frame": {"type": "string"}, "payoff": {"type": "string"},
+        "version": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "main_mechanism": {"type": "string"},
+    "secondary_mechanisms": {"type": "array", "maxItems": 2, "uniqueItems": true, "items": {"type": "string"}},
+    "format": {"enum": ["reel", "tiktok", "short", "story", "carousel", "long_video", "text"]},
+    "duration_seconds": {"oneOf": [{"type": "integer", "minimum": 1}, {"const": "UNKNOWN"}]},
+    "platforms": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "status": {"enum": ["inbox", "idea", "selected", "script", "production", "published", "archived"]},
+    "priority": {"enum": ["NOW", "NEXT", "LATER", "EXPERIMENT", "ARCHIVE"]},
+    "source": {
+      "type": "object",
+      "required": ["type", "references"],
+      "properties": {
+        "type": {"enum": ["creator_experience", "research", "news", "audience", "performance", "brainstorm", "user_input"]},
+        "references": {"type": "array", "items": {"type": "string"}},
+        "verified": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "published_at": {"oneOf": [{"type": "string", "format": "date-time"}, {"const": "UNKNOWN"}]},
+    "external_ids": {"type": "object", "additionalProperties": {"type": "string"}},
+    "score": {
+      "type": ["object", "null"],
+      "properties": {
+        "config_version": {"type": "integer"}, "total": {"type": "number", "minimum": 0, "maximum": 100},
+        "ratings": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0, "maximum": 5}},
+        "justifications": {"type": "object", "additionalProperties": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "hypotheses": {"type": "array", "items": {"type": "string"}},
+    "production": {
+      "type": "object",
+      "required": ["framing", "broll", "screen", "text", "cuts"],
+      "properties": {
+        "framing": {"type": "string"}, "broll": {"type": "array", "items": {"type": "string"}},
+        "screen": {"type": "array", "items": {"type": "string"}}, "text": {"type": "array", "items": {"type": "string"}},
+        "cuts": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "performance": {"type": "object", "required": ["status", "event_ids"], "properties": {"status": {"enum": ["UNKNOWN", "partial", "mature"]}, "event_ids": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
+    "learnings": {"type": "array", "items": {"type": "string", "pattern": "^LRN-[0-9]{4}-[0-9]{4}$"}}
+  }
+}

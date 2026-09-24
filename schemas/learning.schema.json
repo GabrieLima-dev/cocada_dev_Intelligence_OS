@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocada.dev/schemas/learning.schema.json",
+  "title": "Evidence-backed learning",
+  "x-version": "1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "claim", "stage", "confidence", "evidence", "counterevidence", "sample_size", "scope", "created_at", "last_reviewed", "review_at"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^LRN-[0-9]{4}-[0-9]{4}$"},
+    "claim": {"type": "string", "minLength": 1},
+    "stage": {"enum": ["OBSERVATION", "HYPOTHESIS", "STRONG_HYPOTHESIS", "PATTERN", "VALIDATED_PRINCIPLE"]},
+    "confidence": {"enum": ["LOW", "MEDIUM", "HIGH", "VALIDATED"]},
+    "evidence": {"type": "array", "items": {"type": "object", "required": ["ref_id", "metric", "value"], "properties": {"ref_id": {"type": "string"}, "metric": {"type": "string"}, "value": {}, "window": {"type": "string"}}, "additionalProperties": false}},
+    "counterevidence": {"type": "array", "items": {"type": "string"}},
+    "sample_size": {"type": "integer", "minimum": 1},
+    "scope": {"type": "string", "minLength": 1},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "created_at": {"type": "string", "format": "date-time"},
+    "last_reviewed": {"type": "string", "format": "date-time"},
+    "review_at": {"oneOf": [{"type": "string", "format": "date-time"}, {"const": "UNKNOWN"}]},
+    "strategy_implication": {"type": "string"}
+  }
+}

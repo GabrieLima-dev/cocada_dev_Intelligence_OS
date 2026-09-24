@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocada.dev/schemas/metrics-event.schema.json",
+  "title": "Immutable social metrics snapshot",
+  "x-version": "1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "event_id", "content_id", "platform", "captured_at", "window_hours", "metrics", "source"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "event_id": {"type": "string", "pattern": "^MET-[0-9]{8}T[0-9]{6}Z-[A-Z0-9-]+$"},
+    "content_id": {"type": "string", "pattern": "^CNT-[0-9]{4}-[0-9]{4}$"},
+    "platform": {"enum": ["instagram", "tiktok", "youtube", "linkedin", "other"]},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "window_hours": {"oneOf": [{"type": "number", "minimum": 0}, {"const": "UNKNOWN"}]},
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "views": {"type": ["integer", "null"], "minimum": 0}, "reach": {"type": ["integer", "null"], "minimum": 0},
+        "retention_3s": {"type": ["number", "null"], "minimum": 0, "maximum": 1}, "avg_watch_time_seconds": {"type": ["number", "null"], "minimum": 0},
+        "completion_rate": {"type": ["number", "null"], "minimum": 0, "maximum": 1}, "replays": {"type": ["integer", "null"], "minimum": 0},
+        "shares": {"type": ["integer", "null"], "minimum": 0}, "saves": {"type": ["integer", "null"], "minimum": 0},
+        "comments": {"type": ["integer", "null"], "minimum": 0}, "profile_visits": {"type": ["integer", "null"], "minimum": 0},
+        "followers_gained": {"type": ["integer", "null"], "minimum": 0}, "conversions": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "source": {"type": "string", "minLength": 1},
+    "notes": {"type": "string"},
+    "supersedes": {"type": ["string", "null"]}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "event_id": "MET-YYYYMMDDTHHMMSSZ-CNT-YYYY-NNNN",
+  "content_id": "CNT-YYYY-NNNN",
+  "platform": "instagram",
+  "captured_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "window_hours": "UNKNOWN",
+  "metrics": {
+    "views": null, "reach": null, "retention_3s": null,
+    "avg_watch_time_seconds": null, "completion_rate": null, "replays": null,
+    "shares": null, "saves": null, "comments": null, "profile_visits": null,
+    "followers_gained": null, "conversions": null
+  },
+  "source": "manual_export",
+  "notes": "",
+  "supersedes": null
+}

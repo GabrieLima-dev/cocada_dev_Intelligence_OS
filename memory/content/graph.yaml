@@ -1,0 +1,5 @@
+version: 1
+nodes: []
+edges: []
+
+# Use schemas/knowledge-graph.schema.json. O grafo começa vazio porque ainda não há conteúdo registrado.
